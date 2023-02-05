@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .card {
+        width: 400px;
+        margin: 0 auto;
+        background-color: #fff;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+        border-radius: 10px;
+        padding: 30px;
+        text-align: center;
+      }
+      h2 {
+        color: #2403e0;
+        margin-bottom: 20px;
+      }
+      input[type="text"] {
+        padding: 5px;
+        font-size: 18px;
+        margin: 10px 0;
+        width: 300px;
+        border-radius: 5px;
+        border: 1px solid #333;
+      }
+      button {
+        padding: 5px 20px;
+        font-size: 18px;
+        background-color: #3f51b5;
+        color: #fff;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: 20px;
+      }
+      button:hover {
+        background-color: #7c0b73;
+      }
+      #encryptedWord {
+        font-size: 22px;
+        color: #ee2400;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h2>Cypher</h2>
+      <p>Digite uma palavra com até 25 caracteres:</p>
+      <input type="text" id="word" maxlength="25">
+      <button id="encryptBtn">Criptografar</button>
+      <p>A palavra criptografada é: <span id="encryptedWord"> </span></p>
+    </div>
+    
+    <script>
+      document.getElementById("encryptBtn").addEventListener("click", function(){
+        var word = document.getElementById("word").value;
+        
+        function encrypt(word) {
+          var encryptedWord = "";
+          var key = Math.floor(Math.random() * 10) + 1;
+          for (var i = 0; i < word.length; i++) {
+            encryptedWord += String.fromCharCode(word.charCodeAt(i) + key);
+          }
+          return encryptedWord;
+        }
+        
+        var encryptedWord = encrypt(word);
+        
+        document.getElementById("encryptedWord").innerHTML = encryptedWord;
+      });
+    </script>
+  </body>
+</html>
